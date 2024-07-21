@@ -1,0 +1,55 @@
+// CPU.hdl - Implementation of the Hack Central Processing Unit (CPU)
+// Based on "The Elements of Computing Systems" by Nisan and Schocken
+
+CHIP CPU {
+    IN  inM[16],         // Input from data memory (M)
+        instruction[16], // Instruction to be executed
+        reset;           // Reset signal (reset=1 to restart, reset=0 to continue)
+
+    OUT outM[16],        // Output to data memory (M)
+        writeM,          // Write signal for data memory
+        addressM[15],    // Address for data memory (M)
+        pc[15];          // Program counter (next instruction address)
+
+    PARTS:
+    // Decode instruction and control signals
+    Mux16(a=false,
+          b=instruction,
+          sel=instruction[15],
+          out[0]=jgt, out[1]=jeq, out[2]=jlt, out[3]=locM, out[3]=writeM,
+          out[4]=locD, out[5]=locA, out[6]=noAlu, out[7]=fAlu,
+          out[8]=nyAlu, out[9]=zyAlu, out[10]=nxAlu, out[11]=zxAlu,
+          out[12]=cAorM, out[15]=cType);
+
+    // ALU operations
+    ALU(x=aluX, y=aluY, zx=zxAlu, nx=nxAlu, zy=zyAlu, ny=nyAlu,
+        f=fAlu, no=noAlu, out=outAlu, out=outM, zr=zero, ng=negative);
+
+    // Jump conditions
+    Or(a=negative, b=zero, out=negOrZero);
+    Not(in=negOrZero, out=positive);
+
+    // Select input for A register
+    Mux16(a=instruction, b=outAlu, sel=cType, out=regAIn);
+
+    // Select Y input for ALU
+    Mux16(a=regAOut, b=inM, sel=cAorM, out=aluY);
+
+    // Load A register
+    Not(in=cType, out=notCType);
+    Or(a=notCType, b=locA, out=loadA);
+    ARegister(in=regAIn, load=loadA, out=regAOut, out[0..14]=addressM);
+
+    // Load D register
+    DRegister(in=outAlu, load=locD, out=aluX);
+
+    // Jump logic
+    And(a=jgt, b=positive, out=jumpJGT);
+    And(a=jeq, b=zero, out=jumpJEQ);
+    And(a=jlt, b=negative, out=jumpJLT);
+    Or(a=jumpJGT, b=jumpJEQ, out=jumpJGE);
+    Or(a=jumpJLT, b=jumpJGE, out=jump);
+
+    // Program counter logic
+    PC(in=regAOut, load=jump, inc=true, reset=reset, out[0..14]=pc, out=false);
+}
