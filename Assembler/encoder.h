@@ -1,3 +1,6 @@
+#ifndef ENCODER_H
+#define ENCODER_H
+
 #include <iostream>
 #include <string.h>
 using namespace std;
@@ -15,3 +18,5 @@ public:
     static string Comp(string z);
     static string Jump(string z);
 };
+
+#endif
