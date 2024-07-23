@@ -1,9 +1,9 @@
 #ifndef SYMBOL_TABLE_H
 #define SYMBOL_TABLE_H
 
-#include <iostream>
-#include <string.h>
+#include <string>
 #include <map>
+#include <unordered_map>
 
 class symbolTable
 {
@@ -17,14 +17,15 @@ public:
     void addSymbol(const std::string &symbol);
 
     // Add a new symbol with a specific address (used for labels)
-    void addSymbol(const std::string &symbol, int address);
+    void addSymbolLabel(const std::string &symbol, int address);
 
     // Get the address of a given symbol
     int getAddress(const std::string &symbol) const;
 
+    std::unordered_map<std::string, int> table;
+
 private:
-    std::map<std::string, int> table;
     static int nextValue;
 };
 
-#endif
+#endif // SYMBOL_TABLE_H

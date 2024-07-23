@@ -1,0 +1,29 @@
+# Define the compiler to use
+CXX = g++
+
+# Define any compile-time flags
+CXXFLAGS = -std=c++11 -Wall
+
+# Define the source files
+SRCS = main.cpp assemblyParser.cpp encoder.cpp symbolTable.cpp
+
+# Define the object files
+OBJS = $(SRCS:.cpp=.o)
+
+# Define the executable file
+EXEC = assembler
+
+# The default target
+all: $(EXEC)
+
+# Build the executable by linking the object files
+$(EXEC): $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $(EXEC) $(OBJS)
+
+# Compile the .cpp files to .o files
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# Clean up by removing the object files and the executable
+clean:
+	rm -f $(OBJS) $(EXEC)

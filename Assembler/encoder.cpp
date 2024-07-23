@@ -4,7 +4,7 @@ encoder::encoder() {}
 
 encoder::~encoder() {}
 
-string encoder::instructionAaddress(string z)
+string encoder::instructionAddress(string z)
 {
     return translateToBinary(stoi(z));
 }
@@ -14,7 +14,7 @@ string encoder::translateToBinary(int z)
     string address = "";
     int i = z;
 
-    // Get length of Integer in Binary Code (divide by 2)
+    // Convert the integer to binary
     while (i > 0)
     {
         string temp = to_string(i % 2);
@@ -22,9 +22,11 @@ string encoder::translateToBinary(int z)
         i = i / 2;
     }
 
-    // Add the remaining empty bits
-    if (address.length() < 16)
-        address = string(16 - address.length(), '0') + address;
+    // Add the remaining bits to make it 16 bits long
+    if (address.length() < 15)
+    {
+        address = string(15 - address.length(), '0') + address;
+    }
 
     return address;
 }

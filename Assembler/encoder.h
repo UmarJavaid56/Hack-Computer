@@ -2,7 +2,7 @@
 #define ENCODER_H
 
 #include <iostream>
-#include <string.h>
+#include <string>
 using namespace std;
 
 class encoder
@@ -11,7 +11,7 @@ public:
     encoder();  // constructor
     ~encoder(); // destructor
 
-    static string instructionAaddress(string z);
+    static string instructionAddress(string z);
     static string translateToBinary(int z);
 
     static string Dest(string z);
@@ -19,4 +19,4 @@ public:
     static string Jump(string z);
 };
 
-#endif
+#endif // ENCODER_H
