@@ -11,17 +11,17 @@ The Hack computer hardware consists of three core components.
 Source: https://en.wikipedia.org/wiki/Hack_computer
 
 ### Instruction Memory
-**ROM Module:** A linear array of sequential, 16-bit memory registers, starting at address 0x0000. 
+- **ROM Module:** A linear array of sequential, 16-bit memory registers, starting at address 0x0000. 
 
-**Addressing:** Uses a 15-bit wide address bus, allowing access to 32,768 individual memory words.
+- **Addressing:** Uses a 15-bit wide address bus, allowing access to 32,768 individual memory words.
  
-**Clock Signal:** The simulation and computer emulator applications provide the system clock signal.
+- **Clock Signal:** The simulation and computer emulator applications provide the system clock signal.
 
-**Program Counter:** The current instruction address is supplied by the program counter register within the CPU.
+- **Program Counter:** Provides the address of the current instruction within the CPU.
+  
+- **Instruction Fetching:** The instruction stored in the ROM at the address specified by the instruction address bus becomes the "current" instruction at the start of the next clock cycle.
 
-**Instruction Fetching:** The instruction from the ROM register at the address on the instruction address bus is available as the "current" instruction at the beginning of the next cycle.
-
-**Instruction Decoding:** There is no dedicated instruction register; instructions are directly decoded from the active ROM register in each clock cycle.
+- **Instruction Decoding:** There is no dedicated instruction register; instructions are directly decoded from the active ROM register in each clock cycle.
 
 ### Data Memory
 
@@ -29,7 +29,7 @@ Source: https://en.wikipedia.org/wiki/Hack_computer
 
 **Address Segments:**
 
-- **General-Purpose Data Storage:** Addresses 0 (0x0000) through 16383 (0x3FFF) contain conventional read-write registers for general program data.
+- **General-Purpose Data Storage:** Addresses 0 (0x0000) through 16383 (0x3FFF) contain read-write registers for general program data.
 
 - **Screen I/O Subsystem:** Addresses 16384 (0x4000) through 24575 (0x5FFF) function like data RAM but also control output on the computer’s virtual 256 x 512 screen. If screen output is not needed, these registers can be used for general data.
 
@@ -97,7 +97,6 @@ Encoding:
 
 Format:
 - dest=comp;jump
-- Either dest or jump can be empty, leading to formats like dest=comp or comp;jump.
 - dest specifies where to store the result.
 - comp specifies the computation to perform.
 - jump specifies the branching condition.
