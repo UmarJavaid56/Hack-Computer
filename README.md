@@ -55,7 +55,7 @@ Source: https://en.wikipedia.org/wiki/Hack_computer
   
 ![hack_alu](https://github.com/user-attachments/assets/e95a1d07-8cdb-4222-bf59-323d1ff8b409)
 
-Taken from The Elements of Computing Systems, Chapter 2: chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://docs.wixstatic.com/ugd/44046b_f0eaab042ba042dcb58f3e08b46bb4d7.pdf
+Taken from The Elements of Computing Systems, Chapter 2: https://docs.wixstatic.com/ugd/44046b_f0eaab042ba042dcb58f3e08b46bb4d7.pdf
 
 #### Registers
 - D Register (Data): A 16-bit general-purpose register; that always supplies the x operand for the ALU, though its value can be ignored for some instructions.
