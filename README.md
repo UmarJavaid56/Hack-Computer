@@ -97,3 +97,27 @@ Format:
 - jump specifies the branching condition.
 
 This encoding scheme allows the Hack CPU to perform basic computations, data manipulation, and control flow, making it a simple yet powerful instruction set for implementing basic programs and algorithms on the Hack platform.
+
+# Assembler
+
+The Hack Computer Assembler translates Hack assembly language into machine code through a structured process:
+
+### Steps in Assembly Translation
+
+#### Parsing Assembly Instructions
+- Extracts and categorizes instruction types (A, C, L).
+- Removes comments and whitespace for clean processing.
+#### Encoding Instructions into Binary
+- Converts parsed instructions into binary machine code.
+#### Managing Symbol Tables
+- Uses hash maps to resolve symbols.
+- The symbol table maps symbolic names (labels and variables) to memory addresses, ensuring accurate translation.
+
+### Implementation Details
+#### First Pass: Building the Symbol Table
+- Scans the assembly code to identify labels.
+- Creates a symbol table that maps labels to their corresponding addresses.
+- Prepares for the second pass by resolving labels and variables.
+#### Second Pass: Translating to Machine Code
+- Translates assembly instructions into binary using the symbol table created in the first pass.
+- Replaces symbolic names with actual addresses.
