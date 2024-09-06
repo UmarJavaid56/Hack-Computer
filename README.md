@@ -126,3 +126,10 @@ The Hack Computer Assembler translates Hack assembly language into machine code 
 #### Second Pass: Translating to Machine Code
 - Translates assembly instructions into binary using the symbol table created in the first pass.
 - Replaces symbolic names with actual addresses.
+
+# Result
+The Hack Computer successfully executes applications written in Hack Machine Language.
+
+![Pong in Hack Computer](https://github.com/user-attachments/assets/c75b2ac9-18a1-43bd-8fc7-e7bed996342d)
+Final Result: Pong running on the CPU Emulator.
+
