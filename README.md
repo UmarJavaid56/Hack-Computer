@@ -54,6 +54,8 @@ Source: https://en.wikipedia.org/wiki/Hack_computer
 - Provides two status flags: zr (zero) and ng (negative) to indicate computation results.
   
 ![hack_alu](https://github.com/user-attachments/assets/e95a1d07-8cdb-4222-bf59-323d1ff8b409)
+<img width="710" height="458" alt="image" src="https://github.com/user-attachments/assets/248dfd3e-ef56-4de6-988e-192cc0a4bb24" />
+
 
 Taken from The Elements of Computing Systems, Chapter 2: https://docs.wixstatic.com/ugd/44046b_f0eaab042ba042dcb58f3e08b46bb4d7.pdf
 
